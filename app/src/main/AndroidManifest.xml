@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rutbiton.zeeksrorertest">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +26,9 @@
         </activity>
         <activity android:name=".filesActivity" />
         <activity android:name=".homeFilesActivity" />
-        <activity android:name=".latestActivity"></activity>
+        <activity android:name=".latestActivity" />
+        <activity android:name=".newFileActivity"></activity>
+        <service android:name=".GPSserviceActivity"/>
     </application>
 
 </manifest>
