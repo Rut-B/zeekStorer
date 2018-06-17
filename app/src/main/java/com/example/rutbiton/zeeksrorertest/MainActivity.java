@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        searchPlaces  s =new searchPlaces();
+        s.execute("zara");
         if (!runtime_permissions())
             enable_service();
 
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-
 
     }
 
