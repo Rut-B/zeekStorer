@@ -19,11 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver broadcastReceiver;
     private int SPLASH_TIME_OUT = 1500;
+    public static SQLiteHelper sqLiteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sqLiteHelper = new SQLiteHelper(this, "InvoiceDB.sqlite", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS INVOICE(Id INTEGER PRIMARY KEY AUTOINCREMENT, store VARCHAR, sum VARCHAR, image BLOB,date VARCHAR,category VARCHAR,isCredit VARCHAR)");
+        //sqLiteHelper.queryData("DROP TABLE IF EXISTS INVOICE");
         searchPlaces  s =new searchPlaces();
         s.execute("zara");
         if (!runtime_permissions())

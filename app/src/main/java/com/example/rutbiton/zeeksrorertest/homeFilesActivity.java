@@ -14,18 +14,19 @@ import android.widget.Button;
 
 public class homeFilesActivity extends AppCompatActivity  {
 
-    View btnPlus;
+    View btnPlus, btnTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init_cameraBtn();
-
+        Log.d("debug","in cameraaaaaaaaaaaa");
     }
 
     private void init_cameraBtn()
     {
         setContentView(R.layout.activity_home_files);
         btnPlus= findViewById(R.id.btnPlusID);
+        btnTemp= findViewById(R.id.btnCreditID);
  //~check permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             btnPlus.setEnabled(false);
@@ -36,6 +37,14 @@ public class homeFilesActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(homeFilesActivity.this, newFileActivity.class);
+                startActivity(in);
+            }
+        });
+        // to delete
+        btnTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(homeFilesActivity.this, InvoiceListActivity.class);
                 startActivity(in);
             }
         });

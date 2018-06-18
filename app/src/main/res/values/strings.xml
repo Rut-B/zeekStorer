@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">zeekSrorer</string>
+
+
+    <string-array name="category_array">
+        <item>Food</item>
+        <item>category2</item>
+        <item>category3</item>
+        <item>category4</item>
+        <item>category5</item>
+        <item>category6</item>
+        <item>category7</item>
+        <item>category8</item>
+    </string-array>
 </resources>

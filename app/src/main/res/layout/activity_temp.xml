@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TempActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Credits Details"
+                android:textColor="@color/red_dark"
+                android:textSize="40dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="299dp"
+                android:layout_height="241dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/edtSave"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/logo4" />
+
+            <EditText
+                android:id="@+id/edtStore"
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.04"
+                android:ems="10"
+                android:hint="Store"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edtSum"
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="Sum"
+                android:inputType="numberDecimal" />
+
+
+
+
+            <EditText
+                android:id="@+id/edtDay"
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="date" />
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="300dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal" />
+
+            <CheckBox
+                android:id="@+id/checkDueDate"
+                android:layout_width="293dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginBottom="10dp"
+                android:text="have Due dte" />
+
+            <DatePicker
+                android:id="@+id/dueDate"
+                android:layout_width="287dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="45dp"
+
+                android:layout_toEndOf="@+id/imageView"
+                android:layout_toRightOf="@+id/imageView"
+                android:text="save" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
