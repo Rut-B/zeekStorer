@@ -79,6 +79,8 @@ public class TempActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "error!", Toast.LENGTH_SHORT).show();
                 }
+                Intent in = new Intent(TempActivity.this, InvoiceListActivity.class);
+                startActivity(in);
             }
         });
     }

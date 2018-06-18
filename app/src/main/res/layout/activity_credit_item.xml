@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#e7e0e2e9"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".CreditItemActivity">
+
     <ImageView
         android:id="@+id/imgDoc"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_margin="8dp" />
 
     <TextView
@@ -19,15 +23,16 @@
         android:layout_margin="8dp"
         android:layout_toRightOf="@+id/imgDoc"
         android:text="store"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtSum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtStore"
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@+id/imgDoc"
-        android:layout_below="@+id/txtStore"
         android:text="Sum"
         android:textSize="18dp" />
 
@@ -35,11 +40,23 @@
         android:id="@+id/txtDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txtStore"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/txtSum"
-        android:layout_below="@+id/txtStore"
         android:text="Date"
         android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/txtCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="32dp"
+        android:text="category"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

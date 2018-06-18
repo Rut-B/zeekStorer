@@ -1,6 +1,8 @@
 package com.example.rutbiton.zeeksrorertest;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,6 +102,10 @@ private static class ViewHolder {
         viewHolder.txtStore.setText(dataModel.getStore());
         viewHolder.txtSum.setText(dataModel.getSum());
         viewHolder.txtDate.setText(dataModel.getDate());
+        byte[] invoiceImage = dataModel.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(invoiceImage, 0, invoiceImage.length);
+        viewHolder.info.setImageBitmap(bitmap);
+
 
         viewHolder.info.setTag(position);
         // Return the completed view to render on screen
