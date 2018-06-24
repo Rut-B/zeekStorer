@@ -14,7 +14,7 @@ import android.widget.Button;
 
 public class homeFilesActivity extends AppCompatActivity  {
 
-    View btnPlus, btnTemp;
+    View btnPlus, btnInvList, btnCreList, btnLateList, btnTemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,9 @@ public class homeFilesActivity extends AppCompatActivity  {
     {
         setContentView(R.layout.activity_home_files);
         btnPlus= findViewById(R.id.btnPlusID);
-        btnTemp= findViewById(R.id.btnCreditID);
+        btnCreList= findViewById(R.id.btnCreditID);
+        btnInvList= findViewById(R.id.btnInvoiceID);
+        btnLateList= findViewById(R.id.btnLateID);btnTemp= findViewById(R.id.btnTemp);
  //~check permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             btnPlus.setEnabled(false);
@@ -40,11 +42,44 @@ public class homeFilesActivity extends AppCompatActivity  {
                 startActivity(in);
             }
         });
-        // to delete
-        btnTemp.setOnClickListener(new View.OnClickListener() {
+
+        btnInvList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(homeFilesActivity.this, InvoiceListActivity.class);
+                Bundle b = new Bundle();
+                b.putString("option","invoice"); //
+                in.putExtras(b);
+                startActivity(in);
+            }
+        });
+        btnCreList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(homeFilesActivity.this, InvoiceListActivity.class);
+                Bundle b = new Bundle();
+                b.putString("option","credit"); //
+                in.putExtras(b);
+                startActivity(in);
+            }
+        });
+        btnLateList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(homeFilesActivity.this, InvoiceListActivity.class);
+                Bundle b = new Bundle();
+                b.putString("option","latest"); //
+                in.putExtras(b);
+                startActivity(in);
+            }
+        });
+        btnTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(homeFilesActivity.this, invoiceDetailsActivity.class);
+                Bundle b = new Bundle();
+                b.putString("option","latest"); //
+                in.putExtras(b);
                 startActivity(in);
             }
         });

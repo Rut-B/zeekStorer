@@ -24,9 +24,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-    public void insertData(String store, String sum, String date, byte[] image,String category, String isCredit){
+    public void insertData(String store, String sum, String date, byte[] image,String category, String isCredit, String dueDate){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO INVOICE VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO INVOICE VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
@@ -37,7 +37,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         statement.bindString(4, date);
         statement.bindString(5,category);
         statement.bindString(6, isCredit);
-
+        statement.bindString(7, dueDate);
         statement.executeInsert();
     }
 

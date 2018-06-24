@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,21 +17,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private BroadcastReceiver broadcastReceiver;
     private int SPLASH_TIME_OUT = 1500;
     public static SQLiteHelper sqLiteHelper;
+    public static searchPlaces searcher;
+    public static Address my_current_address;
+    public static Geocoder geocoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
         sqLiteHelper = new SQLiteHelper(this, "InvoiceDB.sqlite", null, 1);
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS INVOICE(Id INTEGER PRIMARY KEY AUTOINCREMENT, store VARCHAR, sum VARCHAR, image BLOB,date VARCHAR,category VARCHAR,isCredit VARCHAR)");
-        //sqLiteHelper.queryData("DROP TABLE IF EXISTS INVOICE");
-        searchPlaces  s =new searchPlaces();
-        s.execute("zara");
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS INVOICE(Id INTEGER PRIMARY KEY AUTOINCREMENT, store VARCHAR, sum VARCHAR, image BLOB,date VARCHAR,category VARCHAR,isCredit VARCHAR, dueDate VARCHAR)");
+       //sqLiteHelper.queryData("DROP TABLE IF EXISTS INVOICE");
+        searcher = new searchPlaces();
+        searcher.execute();
         if (!runtime_permissions())
             enable_service();
 

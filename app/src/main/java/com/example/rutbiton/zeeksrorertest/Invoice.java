@@ -13,9 +13,10 @@ public class Invoice {
     //private String imagePath;
     private String category;
     private byte [] image;
-    private boolean isCredit;
+    private String isCredit;
+    private String dueDate;
 
-    public Invoice(String date, String store, String sum, String category, byte [] image, boolean isCredit, int id) {
+    public Invoice(String date, String store, String sum, String category, byte [] image, String isCredit,String dueDate ,int id) {
         this.date = date;
         this.store = store;
         this.sum = sum;
@@ -23,6 +24,7 @@ public class Invoice {
         this.category = category;
         this.isCredit = isCredit;
         this.id = id;
+        this.dueDate = dueDate;
     }
 
     public int getId() {
@@ -49,7 +51,15 @@ public class Invoice {
         return store;
     }
 
-    public boolean isCredit() {
+    public String isCredit() {
+        return isCredit;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public String getIsCredit() {
         return isCredit;
     }
 }

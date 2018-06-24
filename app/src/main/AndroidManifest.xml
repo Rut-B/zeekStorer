@@ -39,11 +39,14 @@
         <service android:name=".GPSserviceActivity" />
 
         <activity android:name=".CreditDetailsActivity" />
-        <activity android:name=".CreditLidtActivity" />
         <activity android:name=".CreditItemActivity" />
         <activity android:name=".TempActivity" />
         <activity android:name=".CreditUpdateActivity" />
-        <activity android:name=".InvoiceListActivity"></activity>
+        <activity android:name=".InvoiceListActivity" />
+        <activity
+            android:name=".invoiceDetailsActivity"
+            android:label="@string/title_activity_invoice_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

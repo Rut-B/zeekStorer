@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ground2"
+    android:divider="@null"
     android:orientation="vertical"
     tools:context=".InvoiceListActivity">
-
+<!--
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -17,10 +19,11 @@
         android:text="Invoices"
         android:textColor="@color/red_dark"
         android:textSize="40dp" />
-
+-->
 
     <ListView
         android:id="@+id/listIn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp" />
 </LinearLayout>

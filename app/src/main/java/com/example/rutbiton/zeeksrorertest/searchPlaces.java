@@ -1,7 +1,10 @@
 package com.example.rutbiton.zeeksrorertest;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +17,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Locale;
 
 /*
 * create class of search locartion by name of store,city,country,radius
@@ -94,5 +98,51 @@ public class searchPlaces extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         searchPlacesByString("zara");
         return null;
+    }
+
+    //when the places changes this function is called , it responsible to send message if needed
+    public void search(double longitude, double latitude) throws IOException {
+
+        String country;
+        String city;
+
+        //get country name
+        Geocoder geocoder = MainActivity.geocoder;
+        List<Address> addresses = geocoder.getFromLocation(latitude, longitude , 1);
+        if (addresses != null && !addresses.isEmpty()) {
+            country = addresses.get(0).getCountryName();
+            city = addresses.get(0). getLocality();
+
+            Log.d("country", "hiii"+country+"city = "+city);
+//        try {
+//            StringBuilder sb = new StringBuilder(PLACES_API_BASE + TYPE_SEARCH + OUT_JSON);
+//            sb.append("?key=" + API_KEY);
+//            sb.append("&components=country:il");
+//            sb.append("&input=" + "zara");
+//            System.out.println("============================================================");
+//            URL url = new URL(sb.toString());
+//            System.out.println("================="+sb.toString()+"===========================================");
+//            conn = (HttpURLConnection) url.openConnection();
+//            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+//
+//            //Load the results into a StringBuilder
+//            int read;
+//            char[] buff = new char[1024];
+//            while ((read = in.read(buff)) != -1) {
+//                jsonResults.append(buff, 0, read);
+//            }
+//        } catch (MalformedURLException e) {
+//            Log.e(LOG_TAG, "Error processing Places API URL", e);
+//            return resultList;
+//        } catch (IOException e) {
+//            Log.e(LOG_TAG, "Error connecting to Places API", e);
+//            return resultList;
+//        } finally {
+//            if (conn != null) {
+//                conn.disconnect();
+//            }
+        }
+
+
     }
 }
