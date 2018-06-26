@@ -21,7 +21,9 @@
     <color name="violet_dark">#640476</color>
     <color name="violet_light">#d0e4c5ea</color>
 
+
     <color name="white">#b5ffffff</color>
+    <color name="trans">#6effffff</color>
 	
 	
 	<color name="colorWhite">#f4e8fd</color>

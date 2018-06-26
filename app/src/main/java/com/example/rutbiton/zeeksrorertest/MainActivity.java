@@ -1,6 +1,8 @@
 package com.example.rutbiton.zeeksrorertest;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,12 +44,27 @@ public class MainActivity extends AppCompatActivity {
         if (!runtime_permissions())
             enable_service();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this,"1")
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("My notification")
+                .setContentText("Much longer text that cannot fit one line...");
+
+
+
+
+
+        NotificationManager mNotificationManager =  (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
+
+
+       new Handler().postDelayed(new Runnable() {
+           @Override
             public void run() {
                 Intent in = new Intent(MainActivity.this, homeFilesActivity.class);
                 startActivity(in);
-                finish();
+               finish();
             }
         }, SPLASH_TIME_OUT);
 

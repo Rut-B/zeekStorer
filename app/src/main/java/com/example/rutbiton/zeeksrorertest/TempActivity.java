@@ -3,7 +3,6 @@ package com.example.rutbiton.zeeksrorertest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.design.chip.Chip;
 import android.support.design.chip.ChipGroup;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import de.keyboardsurfer.android.widget.crouton.Configuration;
+
 import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 
 
-import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -51,7 +48,7 @@ public class TempActivity extends AppCompatActivity {
         byte[] byteArray = extras.getByteArray("image");
 
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        ImageView image = (ImageView) findViewById(R.id.imageView);
+        ImageView image = (ImageView) findViewById(R.id.imageViewDatails);
 
         image.setImageBitmap(bmp);
        haveDueDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
@@ -162,7 +159,7 @@ public class TempActivity extends AppCompatActivity {
         dueDate = (DatePicker) findViewById(R.id.dueDate);
         edtStore = (EditText)findViewById(R.id.edtStore) ;
         edtSum = (EditText)findViewById(R.id.edtSum) ;
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageViewDatails);
         haveDueDate = (CheckBox) findViewById(R.id.checkDueDate);
         btnSave = (Button)findViewById(R.id.btnSave);
 

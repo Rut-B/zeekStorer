@@ -1,5 +1,6 @@
 package com.example.rutbiton.zeeksrorertest;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import java.util.Collections;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
-public class InvoiceListActivity extends AppCompatActivity {
+public class InvoiceListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener  {
 
     ArrayList<Invoice> list;
     ListView listView;
@@ -33,6 +34,7 @@ public class InvoiceListActivity extends AppCompatActivity {
 
 //get all invoices
         listView=(ListView)findViewById(R.id.listIn);
+        listView.setOnItemClickListener(this);
         list= new ArrayList<>();
 
         // get all data from sqlite
@@ -71,7 +73,8 @@ private void getMassages(){
 
         }
 }
-    private Cursor getOption(){
+
+private Cursor getOption(){
         try {
             //get and show massage
 
@@ -95,5 +98,44 @@ private void getMassages(){
         }
         return MainActivity.sqLiteHelper.getData("SELECT * FROM INVOICE");
     }
+
+
+    @Override
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        Invoice item = (Invoice) adapterView.getItemAtPosition(position);
+
+        // Construct an Intent as normal
+        Intent in = new Intent(this, invoiceDetailsActivity.class);
+        Bundle b = new Bundle();
+        b.putString("store",item.getStore()); //
+        b.putString("sum",item.getSum());
+        b.putString("category",item.getCategory());
+        b.putString("date",item.getDate());
+        b.putString("isCredit",item.getIsCredit());
+        b.putString("dueDate",item.getDueDate());
+        b.putByteArray("img",item.getImage());
+        in.putExtras(b);
+        startActivity(in);
+      //  intent.putExtra(DetailActivity.EXTRA_PARAM_ID, item.getId());
+
+
+       /* ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+
+                // Now we provide a list of Pair items which contain the view we can transitioning
+                // from, and the name of the view it is transitioning to, in the launched activity
+                new Pair<View, String>(view.findViewById(R.id.imageview_item),
+                        DetailActivity.VIEW_NAME_HEADER_IMAGE),
+                new Pair<View, String>(view.findViewById(R.id.textview_name),
+                        DetailActivity.VIEW_NAME_HEADER_TITLE));
+
+        // Now we can start the Activity, providing the activity options as a bundle
+        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
+        // END_INCLUDE(start_activity)*/
+
+    }
+
+
 
     }
