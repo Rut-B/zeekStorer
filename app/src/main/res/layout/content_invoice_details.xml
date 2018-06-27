@@ -133,12 +133,12 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/mapFab"
+        android:id="@+id/btnCheckInvoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/fab_margin"
         android:clickable="true"
-        android:src="@android:drawable/ic_menu_agenda"
+        android:src="@drawable/ic_check"
         app:backgroundTint="@color/colorMint"
         app:layout_anchor="@id/textLayout"
         app:layout_anchorGravity="bottom|start"

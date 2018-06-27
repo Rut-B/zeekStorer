@@ -14,7 +14,7 @@ import android.widget.Button;
 
 public class homeFilesActivity extends AppCompatActivity  {
 
-    View btnPlus, btnInvList, btnCreList, btnLateList, btnTemp;
+    View btnPlus, btnInvList, btnCreList, btnLateList, btnSetting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,8 @@ public class homeFilesActivity extends AppCompatActivity  {
         btnPlus= findViewById(R.id.btnPlusID);
         btnCreList= findViewById(R.id.btnCreditID);
         btnInvList= findViewById(R.id.btnInvoiceID);
-        btnLateList= findViewById(R.id.btnLateID);btnTemp= findViewById(R.id.btnTemp);
+        btnLateList= findViewById(R.id.btnLateID);
+        btnSetting= findViewById(R.id.btnSettingID);
  //~check permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             btnPlus.setEnabled(false);
@@ -73,10 +74,10 @@ public class homeFilesActivity extends AppCompatActivity  {
                 startActivity(in);
             }
         });
-        btnTemp.setOnClickListener(new View.OnClickListener() {
+        btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(homeFilesActivity.this, invoiceDetailsActivity.class);
+                Intent in = new Intent(homeFilesActivity.this, tryImageProccess.class);
                 Bundle b = new Bundle();
                 b.putString("option","latest"); //
                 in.putExtras(b);

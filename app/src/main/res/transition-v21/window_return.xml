@@ -17,11 +17,11 @@
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
     android:transitionOrdering="sequential">
 
-    <transition class="com.example.android.xyztouristattractions.ui.ScaleTransition"
+    <transition class="com.example.rutbiton.zeeksrorertest.ScaleTransition"
         android:interpolator="@android:interpolator/fast_out_linear_in"
         android:duration="@android:integer/config_shortAnimTime">
         <targets>
-            <target android:targetId="@id/mapFab" />
+            <target android:targetId="@id/btnCheckInvoice" />
         </targets>
     </transition>
 
@@ -31,7 +31,7 @@
             <target android:targetClass="android.widget.FrameLayout" />
             <target android:targetClass="android.widget.LinearLayout" />
             <target android:targetClass="android.widget.ImageView" />
-            <target android:excludeId="@id/mapFab" />
+            <target android:excludeId="@id/btnCheckInvoice" />
         </targets>
     </explode>
 

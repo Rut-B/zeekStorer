@@ -68,13 +68,20 @@ public class TempActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String dueDateStr;
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());//have to get date
-               String dueDateStr = ""+dueDate.getDayOfMonth()+"/"+(dueDate.getMonth()+1)+"/"+dueDate.getYear();
-                try{
+              if(haveDueDate.isChecked()) {
+                   dueDateStr = "" + dueDate.getDayOfMonth() + "/" + (dueDate.getMonth() + 1) + "/" + dueDate.getYear();
+              }
+              else{
+                 dueDateStr = "Not Inserted";
+
+              }
+               try{
                     MainActivity.sqLiteHelper.insertData(
                             edtStore.getText().toString().trim(),
                             edtSum.getText().toString().trim(),
-                    date,
+                            date,
                     //        ,
                            ImageHandler.imageViewToByte(imageView),
                             spinner.getSelectedItem().toString(),

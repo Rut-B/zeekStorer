@@ -26,10 +26,10 @@
         </targets>
     </explode>
 
-    <transition class="com.example.android.xyztouristattractions.ui.ScaleTransition"
+    <transition class="com.example.rutbiton.zeeksrorertest.ScaleTransition"
         android:interpolator="@android:interpolator/overshoot">
         <targets>
-            <target android:targetId="@id/mapFab" />
+            <target android:targetId="@id/btnCheckInvoice" />
         </targets>
     </transition>
 

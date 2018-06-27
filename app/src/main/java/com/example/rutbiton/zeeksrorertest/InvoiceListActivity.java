@@ -115,6 +115,7 @@ private Cursor getOption(){
         b.putString("isCredit",item.getIsCredit());
         b.putString("dueDate",item.getDueDate());
         b.putByteArray("img",item.getImage());
+        b.putInt("id", item.getId());
         in.putExtras(b);
         startActivity(in);
       //  intent.putExtra(DetailActivity.EXTRA_PARAM_ID, item.getId());
