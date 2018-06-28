@@ -75,6 +75,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return database.rawQuery(sql, null);
     }
 
+    public Cursor getDataWithParams(String sql, String[] arguments){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, arguments);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 

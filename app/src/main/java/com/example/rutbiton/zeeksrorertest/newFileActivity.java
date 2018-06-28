@@ -26,8 +26,10 @@ public class newFileActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-      //  Toast.makeText(getApplicationContext(), "er000000000000000000000000000000000000000000ror!", Toast.LENGTH_LONG).show();
+
         super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode != RESULT_CANCELED){
         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
         //have to add data to this image!
         imageView.setImageBitmap(bitmap);
@@ -39,6 +41,11 @@ public class newFileActivity extends AppCompatActivity {
         in.putExtras(b); //Put your image to your next Intent
         startActivity(in);
         finish();
+        }
+        else
+        {
+            finish();
+        }
     }
 }
 

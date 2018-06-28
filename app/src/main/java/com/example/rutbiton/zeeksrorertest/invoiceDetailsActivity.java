@@ -93,9 +93,9 @@ public class invoiceDetailsActivity extends AppCompatActivity {
             String dueDate = extras.getString("dueDate");
             byte [] img = extras.getByteArray("img");
             // insert to views
-            storeTxt.setText("Store: "+store);
+            storeTxt.setText(store);
             sumTxt.setText("Sum: "+sum);
-            categoryTxt.setText(category);
+            categoryTxt.setText("Category: "+category);
             invoiceDateTxt.setText("Date: "+Idate);
             if(isCredit.equals("true")){
                 //it is credit

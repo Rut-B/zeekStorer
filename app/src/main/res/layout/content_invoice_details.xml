@@ -36,7 +36,7 @@
             android:elevation="2dp">
 
             <TextView
-                android:id="@+id/txtDetailsCategory"
+                android:id="@+id/txtDetailsStore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
@@ -45,9 +45,9 @@
                 android:gravity="right"
                 android:padding="10dp"
                 android:paddingLeft="25dp"
-                android:text="Category"
+                android:text="Store"
                 android:textColor="@color/violet_light"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
@@ -70,7 +70,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtDetailsStore"
+                    android:id="@+id/txtDetailsCategory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
@@ -79,7 +79,7 @@
                     android:background="@drawable/transparent_card"
                     android:padding="10dp"
                     android:paddingLeft="25dp"
-                    android:text="Store"
+                    android:text="category"
                     android:textColor="@color/colorAccent"
                     android:textSize="25sp"
                     android:textStyle="bold" />

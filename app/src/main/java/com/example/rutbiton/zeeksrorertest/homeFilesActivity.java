@@ -3,6 +3,7 @@ package com.example.rutbiton.zeeksrorertest;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,13 @@ import android.widget.Button;
 
 public class homeFilesActivity extends AppCompatActivity  {
 
-    View btnPlus, btnInvList, btnCreList, btnLateList, btnSetting;
+    View btnPlus, btnInvList, btnCreList, btnLateList, btnSetting, btnSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init_cameraBtn();
-        Log.d("debug","in cameraaaaaaaaaaaa");
+
+
     }
 
     private void init_cameraBtn()
@@ -30,6 +32,7 @@ public class homeFilesActivity extends AppCompatActivity  {
         btnInvList= findViewById(R.id.btnInvoiceID);
         btnLateList= findViewById(R.id.btnLateID);
         btnSetting= findViewById(R.id.btnSettingID);
+        btnSearch = findViewById(R.id.btnSearch);
  //~check permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             btnPlus.setEnabled(false);
@@ -74,14 +77,22 @@ public class homeFilesActivity extends AppCompatActivity  {
                 startActivity(in);
             }
         });
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(homeFilesActivity.this, InvoiceListActivity.class);
+                Bundle b = new Bundle();
+                b.putString("option","search"); //
+                in.putExtras(b);
+                startActivity(in);
+            }
+        });
         btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(homeFilesActivity.this, tryImageProccess.class);
-                Bundle b = new Bundle();
-                b.putString("option","latest"); //
-                in.putExtras(b);
-                startActivity(in);
+                Intent i = new Intent("android.settings.APP_NOTIFICATION_SETTINGS");
+                i.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                startActivity(i);
             }
         });
     }
@@ -94,5 +105,15 @@ public class homeFilesActivity extends AppCompatActivity  {
                 btnPlus.setEnabled(true);
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        Log.e("in destroyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy home", "124145454515454515");
+
+        Intent broadcastIntent = new Intent("uk.ac.shef.oak.ActivityRecognition.RestartSensor");
+        sendBroadcast(broadcastIntent);
+        super.onDestroy();
     }
 }

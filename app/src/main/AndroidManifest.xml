@@ -36,7 +36,25 @@
         <activity android:name=".latestActivity" />
         <activity android:name=".newFileActivity" />
 
-        <service android:name=".GPSserviceActivity" />
+        <service
+            android:name=".GPSserviceActivity"
+            android:enabled="true"
+            android:process=":my_process"></service>
+        <service
+            android:name=".TempService"
+            android:enabled="true" >
+        </service>
+        <service android:name=".services.ScheduleService" />
+        <service android:name=".services.NotifyService" />
+        <receiver
+            android:name=".SensorRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="com.example.rutbiton.zeeksrorer.ActivityRecognition.RestartSensor"/>
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".CreditItemActivity" />
         <activity android:name=".TempActivity" />
@@ -51,7 +69,8 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="ocr" />
 
-        <activity android:name=".tryImageProccess"></activity>
+        <activity android:name=".tryImageProccess" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

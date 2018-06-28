@@ -1,6 +1,7 @@
 package com.example.rutbiton.zeeksrorertest;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
@@ -18,8 +20,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.rutbiton.zeeksrorertest.services.ScheduleClient;
+
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,21 +36,34 @@ public class MainActivity extends AppCompatActivity {
     public static searchPlaces searcher;
     public static Address my_current_address;
     public static Geocoder geocoder;
+    private GPSserviceActivity mservice;
+private TempService mSensorService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
         sqLiteHelper = new SQLiteHelper(this, "InvoiceDB.sqlite", null, 1);
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS INVOICE(Id INTEGER PRIMARY KEY AUTOINCREMENT, store VARCHAR, sum VARCHAR, image BLOB,date VARCHAR,category VARCHAR,isCredit VARCHAR, dueDate VARCHAR)");
        //sqLiteHelper.queryData("DROP TABLE IF EXISTS INVOICE");
+        /*****************************************/
+       // mSensorService = new TempService();
+
+
+        mservice = new GPSserviceActivity();
+        mSensorService = new TempService();
         searcher = new searchPlaces();
+        this.getCreditListPlaces();
         searcher.execute();
         if (!runtime_permissions())
             enable_service();
 
-
+        Intent mServiceIntent = new Intent(this, mSensorService.getClass());
+        if (!isMyServiceRunning(mSensorService.getClass())) {
+            startService(mServiceIntent);
+        }
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this,"1")
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -72,9 +91,27 @@ public class MainActivity extends AppCompatActivity {
 
     //------------------------------------
      private void enable_service() {
-         Intent i = new Intent(getApplicationContext(), GPSserviceActivity.class);
-         startService(i);
+
+
+         Intent i = new Intent(getApplicationContext(), mservice.getClass());
+         if (!isMyServiceRunning(mservice.getClass())) {
+             Log.d("isMyServiceRunning?", "effffffffffffffffgrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+             startService(i);
+         }
      }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("isMyServiceRunning?", true+"");
+                return true;
+            }
+        }
+        Log.i ("isMyServiceRunning?", false+"");
+        return false;
+    }
+
     //------------------------------------
     private boolean runtime_permissions() {
         if(Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -117,9 +154,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e("in destroyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", "124145454515454515");
         if(broadcastReceiver != null){
             unregisterReceiver(broadcastReceiver);
         }
+        Intent broadcastIntent = new Intent("uk.ac.shef.oak.ActivityRecognition.RestartSensor");
+        sendBroadcast(broadcastIntent);
+    }
+    public static ArrayList<String> getCreditListPlaces(){
+        //System.out.println("\n__________________    in func    __________\n");
+        ArrayList<String> stores = new ArrayList<>();
+        Cursor cursor = sqLiteHelper.getData("SELECT * FROM INVOICE WHERE isCredit='true'");
+        while (cursor.moveToNext()) {
+
+            String store = cursor.getString(1);
+            stores.add(store);
+            System.out.println("\n____________________________\n"+store);
+        }
+
+
+        return stores;
     }
 
 }

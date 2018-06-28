@@ -4,13 +4,13 @@
 
     <!-- View background color -->
     <solid
-        android:color="@color/violet_dark_trans" >
+        android:color="@color/trans" >
     </solid>
 
     <!-- View border color and width -->
     <stroke
-        android:width="2dp"
-        android:color="@color/colorMint" >
+        android:width="200dp"
+        android:color="@color/white_app" >
     </stroke>
 
     <!-- The radius makes the corners rounded -->
@@ -18,4 +18,6 @@
         android:radius="10dp"   >
     </corners>
 
+    <padding android:left="10dp" android:top="10dp" android:right="10dp"
+        android:bottom="10dp" />
 </shape>

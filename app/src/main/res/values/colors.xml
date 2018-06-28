@@ -18,11 +18,13 @@
     <color name="darkviolet">#7E50F1</color>
     <color name="darkviolet_dark">#683dd4</color>
     <color name="violet">#D65AEE</color>
-    <color name="violet_dark">#640476</color>
+    <color name="violet_dark">#903C78</color>
+    <color name="violet_dark_trans">#e7903c78</color>
     <color name="violet_light">#d0e4c5ea</color>
 
 
     <color name="white">#b5ffffff</color>
+    <color name="white_app">#FEEAE3</color>
     <color name="trans">#6effffff</color>
 	
 	

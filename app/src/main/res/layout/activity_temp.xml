@@ -11,12 +11,24 @@
         android:layout_height="match_parent"
         android:background="@drawable/ground2">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:weightSum="1">
+
+            <DatePicker
+                android:id="@+id/scheduleTimePicker"
+                android:layout_width="287dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/selectButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onDateSelectedButtonClick"
+                android:text="Set notification for this date" />
 
             <ImageView
                 android:id="@+id/imageViewDatails"
@@ -89,9 +101,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_layout_store"
@@ -105,7 +121,7 @@
 
                         <EditText
                             android:id="@+id/edtStore"
-                            android:layout_width="180dp"
+                            android:layout_width="170dp"
                             android:layout_height="50dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentLeft="true"
@@ -146,7 +162,7 @@
                             android:ems="10"
                             android:hint="Sum"
                             android:inputType="numberDecimal"
-                            android:paddingLeft="10dp" />
+                            android:paddingLeft="15dp" />
 
 
                     </android.support.design.widget.TextInputLayout>
@@ -181,6 +197,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="15dp"
                     android:text="have Due date"
+                    android:textColor="@color/white_app"
                     android:textSize="18sp" />
 
                 <DatePicker
@@ -201,11 +218,12 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/ground2"
+                    android:background="@color/colorPrimary"
                     android:elevation="10dp"
                     android:radius="10dp"
                     android:text="save"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorMint"
+                    android:textSize="18sp"
                     android:translationZ="50dp" />
 
 

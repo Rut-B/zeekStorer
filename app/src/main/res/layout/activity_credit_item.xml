@@ -22,24 +22,28 @@
     tools:context=".CreditItemActivity">
 
 
-    <ImageView
-        android:id="@+id/imgDoc"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp"
-        android:scaleType="centerCrop"
-        android:transitionName="image" />
+        <ImageView
+            android:id="@+id/imgDoc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:elevation="10dp"
+            android:maxWidth="150dp"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            android:translationZ="15dp" />
 
         <TextView
             android:id="@+id/txtStore"
             style="?android:textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="7dp"
             android:layout_toRightOf="@+id/imgDoc"
             android:text="store"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white_app"
             android:textSize="30dp"
             android:textStyle="bold"
             tools:text="Title 1" />
@@ -72,10 +76,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtStore"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="-5dp"
             android:layout_toRightOf="@+id/imgDoc"
             android:text="category"
-            android:textColor="@android:color/white"
-            android:textSize="20dp"
+            android:textColor="@color/white_app"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     <android.support.design.widget.CoordinatorLayout
